@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_image.dart';
 import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_text.dart';
 
 import '../../../../../core/utils/assets.dart';
@@ -14,6 +15,7 @@ class _SplachViewBodyState extends State<SplachViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
+  late Animation<Offset> imageSlidingAnimation;
 
   @override
   void initState() {
@@ -25,14 +27,14 @@ class _SplachViewBodyState extends State<SplachViewBody>
       ),
     );
     slidingAnimation=Tween<Offset>(begin: const Offset(-1,0),end:Offset.zero).animate(animationController);
+    imageSlidingAnimation=Tween<Offset>(begin: const Offset(1,0),end:Offset.zero).animate(animationController);
    animationController.forward();
   }
 
   @override
   void dispose() { // بنعملها في نهاية كل كنترولر علشان متهدرش الميموري و توقف تنفيذ الكنترولر اللي بنستخدمه مرة واحده
-    // TODO: implement dispose
-    super.dispose();
     animationController.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -41,10 +43,7 @@ class _SplachViewBodyState extends State<SplachViewBody>
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(
-            AssetsData.logo,
-            color: Colors.green,
-          ),
+          SlidingImage(imageSlidingAnimation: imageSlidingAnimation),
           const SizedBox(
             height: 10,
           ),
@@ -54,5 +53,7 @@ class _SplachViewBodyState extends State<SplachViewBody>
     );
   }
 }
+
+
 
 
