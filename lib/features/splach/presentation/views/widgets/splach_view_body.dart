@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_image.dart';
 import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_text.dart';
+import 'package:get/get.dart';
+import '../../../../../constants.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../../home/presentation/views/home_view.dart';
 
 class SplachViewBody extends StatefulWidget {
   const SplachViewBody({Key? key}) : super(key: key);
@@ -18,17 +20,28 @@ class _SplachViewBodyState extends State<SplachViewBody>
   late Animation<Offset> imageSlidingAnimation;
 
   @override
-  void initState() {
+  void initState() { // هنا حققنا مبدئ Single responsibility principle ان كل ميثود تنفذ حاجة واحده
     super.initState();
-    animationController = AnimationController(
+    initSlidingAnimation();
+    navigateToHomeView();
+  }
+
+  void navigateToHomeView() {
+    Future.delayed( const Duration(seconds: 7),() {
+      Get.to(()=>const HomeView(),duration:kTransitionDuration,transition: Transition.cupertinoDialog);
+    },);
+  }
+
+  void initSlidingAnimation() {
+     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 3,
+        seconds: 5,
       ),
     );
     slidingAnimation=Tween<Offset>(begin: const Offset(-1,0),end:Offset.zero).animate(animationController);
     imageSlidingAnimation=Tween<Offset>(begin: const Offset(1,0),end:Offset.zero).animate(animationController);
-   animationController.forward();
+       animationController.forward();
   }
 
   @override
