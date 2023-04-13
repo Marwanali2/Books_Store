@@ -15,10 +15,7 @@ class SlidingImage extends StatelessWidget {
       animation: imageSlidingAnimation,
       builder: (context, child) =>  SlideTransition(
         position:imageSlidingAnimation,
-        child: Image.asset(
-          AssetsData.logo,
-          color: Colors.green,
-        ),
+        child:  BooklyImage(),
       ),
     );
   }
