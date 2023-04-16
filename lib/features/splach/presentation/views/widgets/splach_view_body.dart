@@ -27,9 +27,12 @@ class _SplachViewBodyState extends State<SplachViewBody>
   }
 
   void navigateToHomeView() {
-    Future.delayed( const Duration(seconds: 7),() {
-      Get.to(()=>const HomeView(),duration:kTransitionDuration,transition: Transition.cupertinoDialog);
-    },);
+    Future.delayed(const Duration(seconds: 7), () {
+      Get.off(() => const HomeView(),
+        duration: kTransitionDuration,
+        transition: Transition.cupertinoDialog,
+      );
+    });
   }
 
   void initSlidingAnimation() {

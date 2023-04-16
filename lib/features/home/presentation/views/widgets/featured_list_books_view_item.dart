@@ -10,6 +10,7 @@ class FeaturedListViewItem extends StatelessWidget {
         // width: 150,
         // height: 224,
         decoration: BoxDecoration(
+          border: Border.all(color: Colors.white30,style: BorderStyle.solid),
             borderRadius: BorderRadius.circular(18),
             image: const DecorationImage(
               fit: BoxFit.fill,
