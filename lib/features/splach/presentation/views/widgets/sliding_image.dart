@@ -15,7 +15,10 @@ class SlidingImage extends StatelessWidget {
       animation: imageSlidingAnimation,
       builder: (context, child) =>  SlideTransition(
         position:imageSlidingAnimation,
-        child:  BooklyImage(),
+        child:  BooklyImage(
+          imageHeight: 50,
+          imageWidth: 50,
+        ),
       ),
     );
   }

@@ -11,12 +11,15 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
-          BooklyImage(color: Colors.white),
+        Image.asset(
+        AssetsData.logo,
+        width: 75,
+        height: 16.1,
+      ),
           const Spacer(),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search,size: 25),
+            icon: const Icon(Icons.search,size: 30),
           ),
 
         ],
