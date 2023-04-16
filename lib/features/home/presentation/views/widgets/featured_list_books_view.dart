@@ -8,7 +8,7 @@ class FeaturedBooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(itemBuilder: (context, index) {
       return  Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.only(right: 8),
         child: SizedBox(// طوله ثابت و يحتوي علي الليست بتعرض صورة نسبتها هي الاسبكت راتيو عشان تكون ريسبونسف
             height: MediaQuery.of(context).size.height*0.30,
             child: const FeaturedListViewItem()),
