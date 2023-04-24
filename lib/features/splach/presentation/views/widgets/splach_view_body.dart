@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_image.dart';
 import 'package:my_bookly_app/features/splach/presentation/views/widgets/sliding_text.dart';
-import 'package:get/get.dart';
-import '../../../../../constants.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../home/presentation/views/home_view.dart';
+import '../../../../../core/utils/app_router.dart';
 
 class SplachViewBody extends StatefulWidget {
   const SplachViewBody({Key? key}) : super(key: key);
@@ -20,7 +19,8 @@ class _SplachViewBodyState extends State<SplachViewBody>
   late Animation<Offset> imageSlidingAnimation;
 
   @override
-  void initState() { // هنا حققنا مبدئ Single responsibility principle ان كل ميثود تنفذ حاجة واحده
+  void initState() {
+    // هنا حققنا مبدئ Single responsibility principle ان كل ميثود تنفذ حاجة واحده
     super.initState();
     initSlidingAnimation();
     navigateToHomeView();
@@ -28,31 +28,38 @@ class _SplachViewBodyState extends State<SplachViewBody>
 
   void navigateToHomeView() {
     Future.delayed(const Duration(seconds: 7), () {
-      Get.off(() => const HomeView(),
-        duration: kTransitionDuration,
-        transition: Transition.cupertinoDialog,
-      );
+      // Get.off(() => const HomeView(),
+      //   duration: kTransitionDuration,
+      //   transition: Transition.cupertinoDialog,
+      // );
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 
   void initSlidingAnimation() {
-     animationController = AnimationController(
+    animationController = AnimationController(
       vsync: this,
       duration: const Duration(
         seconds: 5,
       ),
     );
-    slidingAnimation=Tween<Offset>(begin: const Offset(-1,0),end:Offset.zero).animate(animationController);
-    imageSlidingAnimation=Tween<Offset>(begin: const Offset(1,0),end:Offset.zero).animate(animationController);
-       animationController.forward();
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(-1, 0), end: Offset.zero)
+            .animate(animationController);
+    imageSlidingAnimation =
+        Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
+            .animate(animationController);
+    animationController.forward();
   }
 
   @override
-  void dispose() { // بنعملها في نهاية كل كنترولر علشان متهدرش الميموري و توقف تنفيذ الكنترولر اللي بنستخدمه مرة واحده
+  void dispose() {
+    // بنعملها في نهاية كل كنترولر علشان متهدرش الميموري و توقف تنفيذ الكنترولر اللي بنستخدمه مرة واحده
     animationController.dispose();
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -69,7 +76,3 @@ class _SplachViewBodyState extends State<SplachViewBody>
     );
   }
 }
-
-
-
-
