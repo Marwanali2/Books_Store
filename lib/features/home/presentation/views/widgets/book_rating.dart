@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_bookly_app/core/utils/styles.dart';
 
-import '../../../../../constants.dart';
 class BookRating extends StatelessWidget {
   const BookRating({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+
       children: [
         Image.asset("assets/images/Star.png",width: 13.38,height: 12.8),
         const SizedBox(width: 6.3,),
