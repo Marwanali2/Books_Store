@@ -39,8 +39,7 @@ abstract class TextStyles {
   );
 }
 
-abstract class ColorStyles{
-  static const kPrimaryColor=Color(0xff100B20);
-  static const kGreyColor=Color(0xff707070);
-
+abstract class ColorStyles {
+  static const kPrimaryColor = Color(0xff100B20);
+  static const kGreyColor = Color(0xff707070);
 }

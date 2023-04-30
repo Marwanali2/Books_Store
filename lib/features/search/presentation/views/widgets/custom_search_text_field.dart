@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({Key? key}) : super(key: key);
 
@@ -19,11 +20,7 @@ class CustomSearchTextField extends StatelessWidget {
           onPressed: () {},
           icon: const Opacity(
             opacity: 0.7,
-            child: Icon(
-                Icons.search,
-                size: 30,
-                color: Colors.grey
-            ),
+            child: Icon(Icons.search, size: 30, color: Colors.grey),
           ),
         ),
       ),

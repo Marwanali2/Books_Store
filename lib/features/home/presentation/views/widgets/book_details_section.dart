@@ -4,6 +4,7 @@ import 'package:my_bookly_app/core/utils/styles.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_image.dart';
+
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({Key? key}) : super(key: key);
 
