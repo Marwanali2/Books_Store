@@ -3,10 +3,27 @@ import 'package:my_bookly_app/core/errors/failure.dart';
 import 'package:my_bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:my_bookly_app/features/home/data/repos/home_repo.dart';
 
-class HomeRepoImpl implements HomeRepo {
+import '../../../../core/utils/api_services.dart';
+
+class HomeRepoImpl implements HomeRepo { // هنا بنفذ ال methods اللي بتتنفذ في صفحة ال home
+  final ApiServices apiServices;
+
+  HomeRepoImpl(this.apiServices);
+
   @override
-  fetchBestSellerBooks() {
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
+   try {
+     var newestBooksData=await apiServices.get(
+          endPoint:
+              "volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=newest");
+     List<BookModel>newestBooksList=[];
+     for(var item in newestBooksData['items']){
+       newestBooksList.add(BookModel.fromJson(item));
+     }
+     return right(newestBooksList);
+   } on Exception catch (e) {
+     return left(ServerFailure());
+   }
   }
 
   @override
