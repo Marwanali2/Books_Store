@@ -13,11 +13,11 @@ class HomeRepoImpl implements HomeRepo { // هنا بنفذ ال methods الل�
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
    try {
-     var newestBooksData=await apiServices.get(
+     var newestBooksMapData=await apiServices.get(
           endPoint:
               "volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=newest");
      List<BookModel>newestBooksList=[];
-     for(var item in newestBooksData['items']){
+     for(var item in newestBooksMapData['items']){
        newestBooksList.add(BookModel.fromJson(item));
      }
      return right(newestBooksList);
