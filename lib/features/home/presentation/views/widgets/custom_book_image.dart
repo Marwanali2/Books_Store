@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_router.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({Key? key}) : super(key: key);
-
+  const CustomBookImage({Key? key, required this.imageUrl}) : super(key: key);
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,12 +20,11 @@ class CustomBookImage extends StatelessWidget {
               border:
                   Border.all(color: Colors.white30, style: BorderStyle.solid),
               borderRadius: BorderRadius.circular(18),
-              image: const DecorationImage(
+              image:  DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage(
-                  "assets/images/q1.jpg",
-                ),
-              )),
+                image: NetworkImage(imageUrl,),
+              ),
+          ),
         ),
       ),
     );

@@ -17,18 +17,22 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.30,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: SizedBox(
                     // طوله ثابت و يحتوي علي الليست بتعرض صورة نسبتها هي الاسبكت راتيو عشان تكون ريسبونسف
                     height: MediaQuery.of(context).size.height * 0.30,
-                    child: const CustomBookImage(),
+                    child: CustomBookImage(
+                      imageUrl:
+                          "${state.books[index].volumeInfo?.imageLinks?.thumbnail}",
+                    ),
                   ),
                 );
               },
               scrollDirection: Axis.horizontal,
-              itemCount: 7,
             ),
           );
         } else if (state is FeaturedBooksFailure) {
