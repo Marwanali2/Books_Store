@@ -41,7 +41,7 @@ class BooklyApp extends StatelessWidget {
                 Dio(), //   Setup service locator  مشروحه في فيديو رقم80 ف كورس المتوسط من ثروت service locator و هي عبارة عن  "get_it"package لكي نحقق هذا المبدا نسخدم
               ),
             ),*/
-          ),
+          )..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
