@@ -10,4 +10,6 @@ abstract class HomeRepo {
   // انواع الايرور دول متجمعين في abstract class اسمه Failures
 
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
+
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category});
 }

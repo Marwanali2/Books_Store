@@ -12,11 +12,39 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiServices);
 
   @override
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    try {
+      Map<String, dynamic> newestBooksMapData = await apiServices.get(
+        endPoint: "volumes?Filtering=free-ebooks&q=subject:flowers",//flowers,sun
+      ); //sun
+      List<BookModel> newestBooksList = [];
+      for (var item in newestBooksMapData['items']) {
+        newestBooksList.add(
+          BookModel.fromJson(item),
+        );
+      }
+      return right(newestBooksList);
+    } on Exception catch (e) {
+      if (e is DioError) {
+        return Left(
+          ServerFailure.fromDioError(e),
+        );
+      } else {
+        return left(
+          ServerFailure(
+            errorMessage: e.toString(),
+          ),
+        );
+      }
+    }
+  }
+
+  @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       Map<String, dynamic> newestBooksMapData = await apiServices.get(
           endPoint:
-              "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest");//Programming
+              "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest"); //Programming
       List<BookModel> newestBooksList = [];
       for (var item in newestBooksMapData['items']) {
         newestBooksList.add(BookModel.fromJson(item));
@@ -38,10 +66,10 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category}) async{
     try {
       Map<String, dynamic> newestBooksMapData = await apiServices.get(
-        endPoint: "volumes?Filtering=free-ebooks&q=subject:sun",
+        endPoint: "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=relevance",//flowers,sun
       ); //sun
       List<BookModel> newestBooksList = [];
       for (var item in newestBooksMapData['items']) {
