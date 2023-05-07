@@ -16,7 +16,7 @@ class SimilarBooksListView extends StatelessWidget {
             child: SizedBox(
               // طوله ثابت و يحتوي علي الليست بتعرض صورة نسبتها هي الاسبكت راتيو عشان تكون ريسبونسف
               height: MediaQuery.of(context).size.height * 0.30,
-              child: const CustomBookImage(imageUrl: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA11NbLD.img"),
+              child: const CustomBookImage(imageUrl: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA11NbLD.img",aspectRatio: 2.7 / 4),
             ),
           );
         },

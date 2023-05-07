@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_bookly_app/core/utils/styles.dart';
 
-class BookRating extends StatelessWidget {
-  const BookRating({Key? key}) : super(key: key);
+import '../../managers/newest_books_cubit/newest_books_cubit.dart';
 
+class BookRating extends StatelessWidget {
+  const BookRating({Key? key, required this.rating, required this.numDownloads}) : super(key: key);
+  final double ?rating;
+  final int ?numDownloads;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,15 +16,15 @@ class BookRating extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-        const Text(
-          "4.8",
+         Text(
+          "$rating",
           style: TextStyles.textStyle16,
         ),
         const SizedBox(
           width: 5,
         ),
         Text(
-          "(2390)",
+          "($numDownloads)",
           style: TextStyles.textStyle14.copyWith(
             color: ColorStyles.kGreyColor,
           ),

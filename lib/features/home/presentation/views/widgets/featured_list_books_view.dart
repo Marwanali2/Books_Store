@@ -5,6 +5,7 @@ import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../managers/featured_books_cubit/featured_books_cubit.dart';
 import 'custom_book_image.dart';
+import 'package:lottie/lottie.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class FeaturedBooksListView extends StatelessWidget {
                     child: CustomBookImage(
                       imageUrl:
                           "${state.books[index].volumeInfo?.imageLinks?.thumbnail}",
+                    aspectRatio: 2.7 / 4,
                     ),
                   ),
                 );
@@ -36,9 +38,7 @@ class FeaturedBooksListView extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
-          return const CustomErrorWidget(
-            errorMessage: "failure",
-          );
+          return CustomErrorWidget();
         } else {
           return const CustomLoadingIndicator();
         }

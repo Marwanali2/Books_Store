@@ -51,7 +51,7 @@ class BooklyApp extends StatelessWidget {
                 Dio(),
               ),
             ),*/
-          ),
+          )..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(
