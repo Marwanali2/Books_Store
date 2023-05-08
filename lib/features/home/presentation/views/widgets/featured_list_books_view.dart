@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../managers/featured_books_cubit/featured_books_cubit.dart';
 import 'custom_book_image.dart';
-import 'package:lottie/lottie.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({Key? key}) : super(key: key);
@@ -26,10 +27,18 @@ class FeaturedBooksListView extends StatelessWidget {
                   child: SizedBox(
                     // طوله ثابت و يحتوي علي الليست بتعرض صورة نسبتها هي الاسبكت راتيو عشان تكون ريسبونسف
                     height: MediaQuery.of(context).size.height * 0.30,
-                    child: CustomBookImage(
-                      imageUrl:
-                          "${state.books[index].volumeInfo?.imageLinks?.thumbnail}",
-                    aspectRatio: 2.7 / 4,
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(
+                          AppRouter.kBookDetailsView,
+                          extra: state.books[index],
+                        );
+                      },
+                      child: CustomBookImage(
+                        imageUrl:
+                            "${state.books[index].volumeInfo?.imageLinks?.thumbnail}",
+                        aspectRatio: 2.7 / 4,
+                      ),
                     ),
                   ),
                 );
@@ -38,7 +47,7 @@ class FeaturedBooksListView extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
-          return CustomErrorWidget();
+          return const CustomErrorWidget();
         } else {
           return const CustomLoadingIndicator();
         }

@@ -1,6 +1,7 @@
+// ******** list of bugs ************
 // add shimmer backage
 // add flutter offline package done
-
+// لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,7 @@ void main() {
           Brightness.light, // Set the status bar icon color to light
     ),
   );
-  Bloc.observer=SimpleBlocObserver();
+  Bloc.observer = SimpleBlocObserver();
   runApp(const BooklyApp());
 }
 
@@ -61,7 +62,6 @@ class BooklyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
         theme: ThemeData.dark().copyWith(
-
           scaffoldBackgroundColor: ColorStyles.kPrimaryColor,
           textTheme:
               GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),

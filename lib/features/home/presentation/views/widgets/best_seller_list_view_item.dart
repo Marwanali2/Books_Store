@@ -11,6 +11,7 @@ class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({Key? key, required this.books})
       : super(key: key);
   final BookModel books;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,14 +36,11 @@ class BestSellerListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
                     "${books.volumeInfo?.title}",
                     style:
-                    TextStyles.textStyle20.copyWith(fontFamily: kQuicksand),
+                        TextStyles.textStyle20.copyWith(fontFamily: kQuicksand),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -70,7 +68,10 @@ class BestSellerListViewItem extends StatelessWidget {
                     const SizedBox(
                       width: 36.3,
                     ),
-                     BookRating(rating: books.volumeInfo?.averageRating??4.5, numDownloads:books.volumeInfo?.pageCount??350 ,),
+                    BookRating(
+                      rating: books.volumeInfo?.averageRating ?? 4.5,
+                      numDownloads: books.volumeInfo?.pageCount ?? 350,
+                    ),
                   ],
                 ),
               ],

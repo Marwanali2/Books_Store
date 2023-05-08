@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../managers/similar_books_cubit/similar_books_cubit.dart';
 import 'custom_book_image.dart';
 
 class SimilarBooksListView extends StatelessWidget {
-  const SimilarBooksListView({Key? key}) : super(key: key);
+  const SimilarBooksListView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +23,16 @@ class SimilarBooksListView extends StatelessWidget {
                   child: SizedBox(
                     // طوله ثابت و يحتوي علي الليست بتعرض صورة نسبتها هي الاسبكت راتيو عشان تكون ريسبونسف
                     height: MediaQuery.of(context).size.height * 0.30,
-                    child: const CustomBookImage(
-                        imageUrl:
-                            "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA11NbLD.img",
-                        aspectRatio: 2.7 / 4),
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo?.imageLinks?.thumbnail?? " ",
+                      aspectRatio: 2.7 / 4,
+                    ),
                   ),
                 );
               },
               scrollDirection: Axis.horizontal,
-              itemCount: 7,
+              itemCount: state.books.length,
             ),
           );
         } else if (state is SimilarBooksFailure) {

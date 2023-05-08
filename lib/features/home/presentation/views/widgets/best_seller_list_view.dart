@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../managers/newest_books_cubit/newest_books_cubit.dart';
@@ -22,7 +21,7 @@ class BestSellerListView extends StatelessWidget {
             // لان الليست فيو بيتعملها padding تلقائي
             itemBuilder: (context, index) {
               return  Padding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 30,
                 ),
@@ -32,7 +31,7 @@ class BestSellerListView extends StatelessWidget {
             itemCount: state.books.length,
           );
         } else if (state is NewestBooksFailure) {
-          return CustomErrorWidget();
+          return const CustomErrorWidget();
         } else {
           return const Center(
             child: CircularProgressIndicator(),
