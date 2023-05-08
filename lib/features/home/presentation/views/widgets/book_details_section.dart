@@ -30,7 +30,9 @@ class BookDetailsSection extends StatelessWidget {
                   aspectRatio: 2.7 / 4,
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(
+                height: 40,
+              ),
               Text(
                 "${bookModel.volumeInfo?.title}",
                 textAlign: TextAlign.center,
@@ -58,7 +60,7 @@ class BookDetailsSection extends StatelessWidget {
               const SizedBox(
                 height: 37,
               ),
-              const BooksAction(),
+               BooksAction(bookModel: bookModel,),
             ],
           );
         } else if (state is SimilarBooksFailure) {
