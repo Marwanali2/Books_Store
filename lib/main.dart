@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'package:my_bookly_app/core/utils/service_locator.dart';
 import 'package:my_bookly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:my_bookly_app/simple_bloc_observer.dart';
 
 import 'core/utils/app_router.dart';
 import 'package:my_bookly_app/core/utils/styles.dart';
@@ -25,7 +26,7 @@ void main() {
           Brightness.light, // Set the status bar icon color to light
     ),
   );
-
+  Bloc.observer=SimpleBlocObserver();
   runApp(const BooklyApp());
 }
 
