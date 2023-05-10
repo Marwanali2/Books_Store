@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'package:my_bookly_app/core/utils/service_locator.dart';
 import 'package:my_bookly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:my_bookly_app/features/search/presentation/managers/search_books_cubit/search_books_cubit.dart';
 import 'package:my_bookly_app/simple_bloc_observer.dart';
 
 import 'core/utils/app_router.dart';
@@ -19,6 +20,7 @@ import 'package:my_bookly_app/core/utils/styles.dart';
 
 import 'features/home/presentation/managers/featured_books_cubit/featured_books_cubit.dart';
 import 'features/home/presentation/managers/newest_books_cubit/newest_books_cubit.dart';
+import 'features/search/data/repos/search_repo_impl.dart';
 
 void main() {
   setupServiceLocator();
@@ -61,6 +63,11 @@ class BooklyApp extends StatelessWidget {
               ),
             ),*/
           )..fetchNewestBooks(),
+        ),
+        BlocProvider(
+          create: (context) => SearchBooksCubit(
+            getIt.get<SearchRepoImpl>(),
+          ),
         ),
       ],
       child: MaterialApp.router(
