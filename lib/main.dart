@@ -1,7 +1,11 @@
 // ******** list of bugs ************
-// add shimmer backage
+// login page
+// handle shop icon which contain loved books and unloved books for each user in details page
+// handle price
+// add shimmer package
 // add flutter offline package done
 // لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
+// enable search 1.repo 2.repo implementation 3.cubit 4.use cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
