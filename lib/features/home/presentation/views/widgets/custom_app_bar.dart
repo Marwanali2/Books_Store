@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_bookly_app/core/utils/app_router.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../../search/presentation/views/widgets/search_view_body.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kSearchView);
+              showSearch(context: context, delegate: DataSearch(),); // GoRouter.of(context).push(AppRouter.kSearchView);
             },
             icon: const Icon(Icons.search, size: 30),
           ),
