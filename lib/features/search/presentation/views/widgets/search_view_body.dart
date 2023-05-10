@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgets/custom_error_widget.dart';
+import '../../managers/search_books_cubit/search_books_cubit.dart';
 import 'custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -7,14 +10,65 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("");
-
+    return BlocBuilder<SearchBooksCubit, SearchBooksState>(
+      builder: (context, state) {
+        if (state is SearchBooksSuccess) {
+          return CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomSearchTextField(
+                        onChanged: (inputData) {},
+                      ),
+                      const SizedBox(
+                        height: 60,
+                      ),
+                      const Text(
+                        "Search Results",
+                        style: TextStyles.textStyle18,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          // لان الليست فيو بيتعملها padding تلقائي
+                          itemBuilder: (context, index) {
+                            return const Padding(
+                              padding: EdgeInsets.only(bottom: 20),
+                              // child: BestSellerListViewItem(),
+                            );
+                          },
+                          itemCount: 10,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        } else if (state is SearchBooksFailure) {
+          return const CustomErrorWidget();
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
   }
 }
 
+/*class DataSearch extends SearchDelegate{
 
-class DataSearch extends SearchDelegate{
-  
   @override
   List<Widget>? buildActions(BuildContext context) {// actions for app bar
     return [
@@ -40,49 +94,7 @@ class DataSearch extends SearchDelegate{
    return const Text("show when some one search",);
   }
 
-}
-
-
-/* CustomScrollView(
-      slivers: [
-        SliverFillRemaining(
-            child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomSearchTextField(
-                onChanged: (inputData) {},
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              const Text(
-                "Search Results",
-                style: TextStyles.textStyle18,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  // لان الليست فيو بيتعملها padding تلقائي
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                      // child: BestSellerListViewItem(),
-                    );
-                  },
-                  itemCount: 10,
-                ),
-              )
-            ],
-          ),
-        )),
-      ],
-    );*/
+}*/
 
 // example
 
