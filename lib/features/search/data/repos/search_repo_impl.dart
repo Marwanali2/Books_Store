@@ -11,18 +11,18 @@ class SearchRepoImpl implements SearchRepo {
   SearchRepoImpl(this.apiServices);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSearchBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchSearchBooks({required String bookType}) async {
     try {
-      Map<String, dynamic> newestBooksMapData = await apiServices.get(
-        endPoint: "volumes?Filtering=free-ebooks&q=subject:",
+      Map<String, dynamic> booksMapData = await apiServices.get(
+        endPoint: "volumes?Filtering=free-ebooks&q=subject:$bookType",
       );
-      List<BookModel> newestBooksList = [];
-      for (var item in newestBooksMapData['items']) {
-        newestBooksList.add(
+      List<BookModel> booksList = [];
+      for (var item in booksMapData['items']) {
+        booksList.add(
           BookModel.fromJson(item),
         );
       }
-      return right(newestBooksList);
+      return right(booksList);
     } on Exception catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));

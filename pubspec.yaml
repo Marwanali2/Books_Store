@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  anim_search_bar: ^2.0.3
   cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -43,6 +44,7 @@ dependencies:
   google_fonts: ^4.0.3
   lottie: ^2.3.2
   search_page: ^2.3.0
+  shimmer: ^2.0.0
   url_launcher: ^6.1.10
 
 dev_dependencies:

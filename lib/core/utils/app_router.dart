@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_bookly_app/core/utils/service_locator.dart';
 import 'package:my_bookly_app/features/home/presentation/managers/similar_books_cubit/similar_books_cubit.dart';
+import 'package:my_bookly_app/features/splach/presentation/views/splach_view.dart';
 
 import '../../features/home/data/models/book_model/book_model.dart';
 import '../../features/home/data/repos/home_repo_impl.dart';
@@ -20,7 +21,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/', // the main screen
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => const SplachView(),
       ),
       // GoRoute(
       //   path: '/', // the main screen
@@ -47,10 +48,10 @@ abstract class AppRouter {
           create: (context) {
             return SearchBooksCubit(
               getIt.get<SearchRepoImpl>(),
-            );
+            )..fetchSearchBooks(bookType: state.extra as String);
           },
           child:  SearchView(
-            bookModel: state.extra as BookModel,
+            bookName: state.extra as String,
           ),
         ),
       ),

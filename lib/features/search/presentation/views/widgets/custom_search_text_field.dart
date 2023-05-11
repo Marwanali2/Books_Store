@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../../home/data/models/book_model/book_model.dart';
+
 class CustomSearchTextField extends StatelessWidget {
    const CustomSearchTextField({Key? key, required this.onChanged}) : super(key: key);
-  final void Function(String inputData) onChanged;
+final void Function(String inputBookTitle)onChanged;
   @override
   Widget build(BuildContext context) {
+
     return TextField(
       style: const TextStyle(),
       onChanged: onChanged,
@@ -37,4 +40,7 @@ class CustomSearchTextField extends StatelessWidget {
       ),
     );
   }
+
+
+
 }

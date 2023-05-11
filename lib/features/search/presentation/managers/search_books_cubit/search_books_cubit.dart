@@ -13,10 +13,14 @@ class SearchBooksCubit extends Cubit<SearchBooksState> {
           SearchBooksInitial(),
         );
   final SearchRepo _searchRepo;
+  // List<BookModel>books=[];
+  // List<BookModel>filteredBooks=[];
 
-  Future<void> fetchSearchBooks() async {
+
+  Future<void> fetchSearchBooks({required String bookType}) async {
     emit(SearchBooksLoading());
-    var result = await _searchRepo.fetchSearchBooks();
+    var result = await _searchRepo.fetchSearchBooks(bookType: bookType);
+
     result.fold((failure) {
       emit(
         SearchBooksFailure(
@@ -31,4 +35,8 @@ class SearchBooksCubit extends Cubit<SearchBooksState> {
       );
     });
   }
+  // void filterProducts({required String inputBookTitle}){
+  //   filteredBooks=books.where((element) => element.volumeInfo!.title!.toLowerCase().startsWith(inputBookTitle.toLowerCase())).toList();
+  //   emit(SearchBooksSuccess(books));
+  // }
 }

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
+import '../../../../home/presentation/views/widgets/best_seller_list_view_item.dart';
 import '../../managers/search_books_cubit/search_books_cubit.dart';
-import 'custom_search_text_field.dart';
-
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // var cubit=BlocProvider.of<SearchBooksCubit>(context);
     return BlocBuilder<SearchBooksCubit, SearchBooksState>(
       builder: (context, state) {
         if (state is SearchBooksSuccess) {
@@ -22,12 +22,12 @@ class SearchViewBody extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomSearchTextField(
-                        onChanged: (inputData) {},
-                      ),
-                      const SizedBox(
-                        height: 60,
-                      ),
+                      // // CustomSearchTextField(onChanged: (inputBookTitle) {
+                      // //   cubit.filterProducts(inputBookTitle: inputBookTitle);
+                      // // },),
+                      // const SizedBox(
+                      //   height: 60,
+                      // ),
                       const Text(
                         "Search Results",
                         style: TextStyles.textStyle18,
@@ -41,12 +41,12 @@ class SearchViewBody extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           // لان الليست فيو بيتعملها padding تلقائي
                           itemBuilder: (context, index) {
-                            return const Padding(
-                              padding: EdgeInsets.only(bottom: 20),
-                              // child: BestSellerListViewItem(),
+                            return  Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                               child: BestSellerListViewItem(books: state.books[index]),//cubit.filteredBooks.isEmpty?cubit.filteredBooks[index]:
                             );
                           },
-                          itemCount: 10,
+                          itemCount: state.books.length,//cubit.filteredBooks.isEmpty?:cubit.filteredBooks.length
                         ),
                       )
                     ],
