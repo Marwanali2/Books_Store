@@ -1,11 +1,12 @@
 // ******** list of bugs ************
 // login page
 // handle shop icon which contain loved books and unloved books for each user in details page
-// handle price
+// refresh page  لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
 // add shimmer package
-// لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
 // ✅ add flutter offline package
 // ✅ enable search 1.repo 2.repo implementation 3.cubit 4.use cubit
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,7 @@ void main() {
       statusBarColor: ColorStyles
           .kPrimaryColor, // Set the status bar color to kPrimaryColor
       statusBarIconBrightness:
-          Brightness.light, // Set the status bar icon color to light
+      Brightness.light, // Set the status bar icon color to light
     ),
   );
   Bloc.observer = SimpleBlocObserver();

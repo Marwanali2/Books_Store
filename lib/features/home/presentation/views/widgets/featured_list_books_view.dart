@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../managers/featured_books_cubit/featured_books_cubit.dart';
 import 'custom_book_image.dart';
+import 'featured_list_shimmer.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class FeaturedBooksListView extends StatelessWidget {
         } else if (state is FeaturedBooksFailure) {
           return const CustomErrorWidget();
         } else {
-          return const CustomLoadingIndicator();
+          return const FeaturedListShimmer();
         }
       },
     );
