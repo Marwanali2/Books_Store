@@ -2,7 +2,7 @@
 // login page
 // handle shop icon which contain loved books and unloved books for each user in details page
 // refresh page  لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
-// add shimmer package
+// ✅ add shimmer package
 // ✅ add flutter offline package
 // ✅ enable search 1.repo 2.repo implementation 3.cubit 4.use cubit
 

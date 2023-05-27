@@ -45,7 +45,8 @@ class FeaturedBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
             ),
           );
-        } else if (state is FeaturedBooksFailure) {
+        }
+        else if (state is FeaturedBooksFailure) {
           return const CustomErrorWidget();
         } else {
           return const FeaturedListShimmer();
