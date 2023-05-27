@@ -5,6 +5,7 @@ import 'package:my_bookly_app/core/utils/styles.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../../data/models/book_model/book_model.dart';
 import '../../managers/similar_books_cubit/similar_books_cubit.dart';
+import 'shimmer/book_details_scetion_shimmer.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_image.dart';
@@ -67,7 +68,7 @@ class BookDetailsSection extends StatelessWidget {
           return const CustomErrorWidget();
         } else {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: BookDetailsSectionShimmer(),
           );
         }
       },

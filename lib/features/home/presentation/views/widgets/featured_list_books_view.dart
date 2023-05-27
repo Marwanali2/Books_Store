@@ -5,7 +5,7 @@ import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../managers/featured_books_cubit/featured_books_cubit.dart';
 import 'custom_book_image.dart';
-import 'featured_list_shimmer.dart';
+import 'shimmer/featured_list_shimmer.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({Key? key}) : super(key: key);

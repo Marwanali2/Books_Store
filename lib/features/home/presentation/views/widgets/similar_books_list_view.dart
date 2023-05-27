@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_bookly_app/features/home/presentation/views/widgets/shimmer/similar_books_list_shimmer.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../managers/similar_books_cubit/similar_books_cubit.dart';
 import 'custom_book_image.dart';
@@ -40,7 +41,7 @@ class SimilarBooksListView extends StatelessWidget {
           return const CustomErrorWidget();
         } else {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: SimilarBooksListShimmer(),
           );
         }
       },

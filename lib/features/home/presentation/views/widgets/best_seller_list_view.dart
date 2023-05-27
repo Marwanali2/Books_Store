@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../managers/newest_books_cubit/newest_books_cubit.dart';
-import 'best_seller_list_shimmer.dart';
+import 'shimmer/best_seller_list_shimmer.dart';
 import 'best_seller_list_view_item.dart';
 
 class BestSellerListView extends StatelessWidget {
