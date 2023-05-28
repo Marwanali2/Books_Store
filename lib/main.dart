@@ -1,14 +1,14 @@
 // ******** list of bugs ************
 // login page
 // handle shop icon which contain loved books and unloved books for each user in details page
-// refresh page  لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
+// ✅ refresh page  لو شغلت الابب اول مرة من غير نت هيعرض انك اوفلاين و يجبلك اللوتي لكن مش بيعمل ريفريش بحيث انك لما تفتح نت يجبلك المحتوي
 // ✅ add shimmer package
 // ✅ add flutter offline package
 // ✅ enable search 1.repo 2.repo implementation 3.cubit 4.use cubit
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'package:my_bookly_app/core/utils/service_locator.dart';
@@ -23,7 +23,7 @@ import 'features/home/presentation/managers/featured_books_cubit/featured_books_
 import 'features/home/presentation/managers/newest_books_cubit/newest_books_cubit.dart';
 import 'features/search/data/repos/search_repo_impl.dart';
 
-void main() {
+void main() async{
   setupServiceLocator();
   // Set the status bar color and icon color
   SystemChrome.setSystemUIOverlayStyle(
@@ -31,10 +31,12 @@ void main() {
       statusBarColor: ColorStyles
           .kPrimaryColor, // Set the status bar color to kPrimaryColor
       statusBarIconBrightness:
-      Brightness.light, // Set the status bar icon color to light
+          Brightness.light, // Set the status bar icon color to light
     ),
   );
   Bloc.observer = SimpleBlocObserver();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const BooklyApp());
 }
 
