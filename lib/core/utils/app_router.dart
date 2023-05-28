@@ -4,6 +4,7 @@ import 'package:my_bookly_app/core/utils/service_locator.dart';
 import 'package:my_bookly_app/features/home/presentation/managers/similar_books_cubit/similar_books_cubit.dart';
 
 
+import '../../features/auth/presentation/views/login_screen.dart';
 import '../../features/auth/presentation/views/signup_screen.dart';
 import '../../features/home/data/models/book_model/book_model.dart';
 import '../../features/home/data/repos/home_repo_impl.dart';
@@ -17,12 +18,14 @@ abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/bookDetailsView';
   static const kSearchView = '/searchView';
+  static const kLoginScreen='/loginScreen';
+  static const kSignUpScreen='/SignUpScreen';
   static final router = GoRouter(
     // GoRouter configuration
     routes: [
       GoRoute(
         path: '/', // the main screen
-        builder: (context, state) =>  SignUpScreen(),//const SplachView(),
+        builder: (context, state) =>  const SignUpScreen(),//const SplachView(),
       ),
       // GoRoute(
       //   path: '/', // the main screen
@@ -56,6 +59,9 @@ abstract class AppRouter {
           ),
         ),
       ),
+      GoRoute(path: kLoginScreen, builder: (context, state) =>  LoginScreen(),),
+
+      GoRoute(path: kSignUpScreen, builder: (context, state) =>  SignUpScreen(),),
     ],
   );
 }

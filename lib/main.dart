@@ -12,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'package:my_bookly_app/core/utils/service_locator.dart';
+import 'package:my_bookly_app/features/auth/presentation/managers/auth_cubit/auth_cubit.dart';
 import 'package:my_bookly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:my_bookly_app/features/search/presentation/managers/search_books_cubit/search_books_cubit.dart';
 import 'package:my_bookly_app/simple_bloc_observer.dart';
@@ -72,6 +73,7 @@ class BooklyApp extends StatelessWidget {
             getIt.get<SearchRepoImpl>(),
           ),
         ),
+        BlocProvider(create: (context) => AuthCubit()),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
