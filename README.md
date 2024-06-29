@@ -1,16 +1,38 @@
-# my_bookly_app
+# Hi Geeks 👋
+# <p align="center">Books Store App</p>
+  
+✨It is a project that is online books  store which display google books store books store via its API.
 
-A new Flutter project.
+## ✍ System Design
 
-## Getting Started
+![Untitled Diagram drawio (3)](https://github.com/Marwanali2/Books_Store/assets/104406542/709625c5-eb34-4ebb-8125-893c5a9e4d3e)
+        
+## 🧐 Features    
+- Show Best Seller Books
+- Show Details of each book
+- searching for any book
+- Read any book on google books store via app
 
-This project is a starting point for a Flutter application.
+## 📽 Demo     
 
-A few resources to get you started if this is your first Flutter project:
+https://www.linkedin.com/posts/marwan-ali-309aa1219_my-final-project-bookly-app-in-advanced-activity-7078442480592896000-EXfr?utm_source=share&utm_medium=member_desktop
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🙇 Authors
+#### Marwan Ali
+- LinkedIn: [Marwan Ali](https://www.linkedin.com/in/marwan-ali-309aa1219/)
+- Github: [@Marwanali2](https://github.com/Marwanali2)
+- Twitter: [@MaroAlmaro](https://x.com/MaroAlmaro)        
+ 
+
+## 🛠️ Tech Stack
+- [Flutter](https://flutter.dev/)
+
+
+ ## 💻 Install Dependencies    
+- Use the following git clone command, This will create a local copy of the repository on your machine.
+```bash
+git clone https://github.com/Marwanali2/Books_Store.git
+```
+
+        
